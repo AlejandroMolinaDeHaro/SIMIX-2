@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Google Pixel - Tech Wise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{font-family:Arial;background:#f4f6f8;margin:0}
+.top-bar{background:#007BFF;color:#fff;padding:15px 30px;display:flex;justify-content:space-between}
+.top-bar a{color:white;text-decoration:none;margin-left:15px}
+.cart-count{background:red;border-radius:50%;padding:3px 8px;font-size:12px}
+h1{text-align:center;color:#007BFF;margin:30px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding:0 30px 40px}
+.card{background:white;padding:15px;border-radius:12px;box-shadow:0 6px 15px rgba(0,0,0,.1);text-align:center}
+.card img{width:100%;height:180px;object-fit:contain}
+.price{font-weight:bold;margin:10px 0}
+button{background:#007BFF;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<div>📱 Google Pixel</div>
+<div>
+<a href="index.html">Inicio</a>
+<a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
+</div>
+</div>
+
+<h1>Google Pixel</h1>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://pngimg.com/uploads/google_pixel_8/google_pixel_8_PNG6.png">
+<h3>Pixel 8 Pro</h3>
+<div class="price">1099 €</div>
+<button onclick="add('Google Pixel 8 Pro',1099)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/google_pixel_8/google_pixel_8_PNG4.png">
+<h3>Pixel 8</h3>
+<div class="price">799 €</div>
+<button onclick="add('Google Pixel 8',799)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/google_pixel_7/google_pixel_7_PNG5.png">
+<h3>Pixel 7 Pro</h3>
+<div class="price">699 €</div>
+<button onclick="add('Google Pixel 7 Pro',699)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/google_pixel_7/google_pixel_7_PNG3.png">
+<h3>Pixel 7</h3>
+<div class="price">599 €</div>
+<button onclick="add('Google Pixel 7',599)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/google_pixel_6/google_pixel_6_PNG6.png">
+<h3>Pixel 6</h3>
+<div class="price">449 €</div>
+<button onclick="add('Google Pixel 6',449)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/google_pixel_6a/google_pixel_6a_PNG5.png">
+<h3>Pixel 6a</h3>
+<div class="price">349 €</div>
+<button onclick="add('Google Pixel 6a',349)">Añadir</button>
+</div>
+
+</div>
+
+<script>
+function add(n,p){
+ let c = JSON.parse(localStorage.getItem("carrito")) || [];
+ c.push({nombre:n,precio:p});
+ localStorage.setItem("carrito",JSON.stringify(c));
+ document.getElementById("contador").textContent = c.length;
+}
+document.getElementById("contador").textContent =
+(JSON.parse(localStorage.getItem("carrito"))||[]).length;
+</script>
+
+</body>
+</html>

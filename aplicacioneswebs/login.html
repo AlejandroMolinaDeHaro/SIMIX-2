@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Tech Wise</title>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-image: url("ChatGPT Image 12 dic 2025, 09_14_55.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-container {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(6px);
+    padding: 40px;
+    border-radius: 15px;
+    width: 320px;
+    text-align: center;
+  }
+
+  .login-container img {
+    width: 120px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    color: #007BFF;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .secondary {
+    background: #6c757d;
+  }
+
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+  <img src="logo-techwise.png" alt="Tech Wise">
+
+  <!-- LOGIN -->
+  <div id="login">
+    <h2>Iniciar sesión</h2>
+
+    <form onsubmit="login(event)">
+      <input type="text" id="user" placeholder="Usuario" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+
+    <button type="button" class="secondary" onclick="mostrarRegistro()">Registro</button>
+    <div id="errorLogin" class="error"></div>
+  </div>
+
+  <!-- REGISTRO -->
+  <div id="registro" class="hidden">
+    <h2>Registro</h2>
+
+    <form onsubmit="registrar(event)">
+      <input type="text" id="newUser" placeholder="Nuevo usuario" required>
+      <input type="password" id="newPass" placeholder="Nueva contraseña" required>
+      <button type="submit">Guardar</button>
+    </form>
+
+    <button type="button" class="secondary" onclick="mostrarLogin()">Volver al login</button>
+    <div id="errorRegistro" class="error"></div>
+  </div>
+</div>
+
+<script>
+  // Usuario de ejemplo inicial
+  if (!localStorage.getItem("usuario")) {
+    localStorage.setItem("usuario", "admin");
+    localStorage.setItem("password", "1234");
+  }
+
+  // LOGIN
+  function login(e) {
+    e.preventDefault();
+
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("password").value;
+
+    if (
+      user === localStorage.getItem("usuario") &&
+      pass === localStorage.getItem("password")
+    ) {
+      localStorage.setItem("logueado", "true");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("errorLogin").innerText =
+        "Usuario o contraseña incorrectos";
+    }
+  }
+
+  // REGISTRO
+  function mostrarRegistro() {
+    document.getElementById("login").classList.add("hidden");
+    document.getElementById("registro").classList.remove("hidden");
+  }
+
+  function mostrarLogin() {
+    document.getElementById("registro").classList.add("hidden");
+    document.getElementById("login").classList.remove("hidden");
+  }
+
+  function registrar(e) {
+    e.preventDefault();
+
+    const newUser = document.getElementById("newUser").value;
+    const newPass = document.getElementById("newPass").value;
+
+    localStorage.setItem("usuario", newUser);
+    localStorage.setItem("password", newPass);
+
+    document.getElementById("errorRegistro").innerText =
+      "Usuario registrado correctamente";
+
+    setTimeout(mostrarLogin, 1000); // vuelve al login después de 1s
+  }
+</script>
+
+</body>
+</html>

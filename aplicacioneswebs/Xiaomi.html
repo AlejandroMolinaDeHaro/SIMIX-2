@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Xiaomi - Tech Wise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{font-family:Arial;background:#f4f6f8;margin:0}
+.top-bar{background:#007BFF;color:#fff;padding:15px 30px;display:flex;justify-content:space-between}
+.top-bar a{color:white;text-decoration:none;margin-left:15px}
+.cart-count{background:red;border-radius:50%;padding:3px 8px;font-size:12px}
+h1{text-align:center;color:#007BFF;margin:30px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding:0 30px 40px}
+.card{background:white;padding:15px;border-radius:12px;box-shadow:0 6px 15px rgba(0,0,0,.1);text-align:center}
+.card img{width:100%;height:180px;object-fit:contain}
+.price{font-weight:bold;margin:10px 0}
+button{background:#007BFF;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<div>📱 Xiaomi</div>
+<div>
+<a href="index.html">Inicio</a>
+<a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
+</div>
+</div>
+
+<h1>Xiaomi</h1>
+
+<div class="grid">
+
+<!-- Modelos principales -->
+<div class="card">
+<img src="Xiaomi 14.png">
+<h3>Xiaomi 14</h3>
+<div class="price">899 €</div>
+<button onclick="add('Xiaomi 14',899)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="Xiaomi 13.png">
+<h3>Xiaomi 13</h3>
+<div class="price">749 €</div>
+<button onclick="add('Xiaomi 13',749)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="redmi note 13.png">
+<h3>Redmi Note 13</h3>
+<div class="price">299 €</div>
+<button onclick="add('Redmi Note 13',299)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="poco X6.png">
+<h3>Poco X6</h3>
+<div class="price">249 €</div>
+<button onclick="add('Poco X6',249)">Añadir</button>
+</div>
+
+<!-- Nuevos modelos -->
+<div class="card">
+<img src="xiaomi 12.png">
+<h3>Xiaomi 12</h3>
+<div class="price">699 €</div>
+<button onclick="add('Xiaomi 12',699)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="xiaomi 12 pro.png">
+<h3>Xiaomi 12 Pro</h3>
+<div class="price">799 €</div>
+<button onclick="add('Xiaomi 12 Pro',799)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="redmi 12 pro.png">
+<h3>Redmi Note 12</h3>
+<div class="price">279 €</div>
+<button onclick="add('Redmi Note 12',279)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="redmi 11 pro.png">
+<h3>Redmi Note 11</h3>
+<div class="price">239 €</div>
+<button onclick="add('Redmi Note 11',239)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="poco f5.png">
+<h3>Poco F5</h3>
+<div class="price">349 €</div>
+<button onclick="add('Poco F5',349)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="poco M5.png">
+<h3>Poco M5</h3>
+<div class="price">179 €</div>
+<button onclick="add('Poco M5',179)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="redmi 10.png">
+<h3>Redmi 10</h3>
+<div class="price">149 €</div>
+<button onclick="add('Redmi 10',149)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="redmi 11.png">
+<h3>Redmi 11</h3>
+<div class="price">179 €</div>
+<button onclick="add('Redmi 11',179)">Añadir</button>
+</div>
+
+</div>
+
+<script>
+function add(n,p){
+  let c = JSON.parse(localStorage.getItem("carrito")) || [];
+  c.push({nombre:n, precio:p});
+  localStorage.setItem("carrito", JSON.stringify(c));
+  document.getElementById("contador").textContent = c.length;
+}
+document.getElementById("contador").textContent = (JSON.parse(localStorage.getItem("carrito"))||[]).length;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tech Wise</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .top-bar, .bottom-bar {
+    background: #007BFF;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .top-bar img {
+    height: 70px; 
+  }
+
+  .top-bar a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+  }
+
+  .top-bar a:hover {
+    color: #ffeb3b;
+    text-decoration: underline;
+  }
+
+  .content {
+    flex: 1;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    background-image: url("ChatGPT Image 12 dic 2025, 09_14_55.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .left-section,
+  .right-section {
+    backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .left-section {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 20px 40px;
+    justify-content: start;
+    flex: 1;
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 20px;
+    grid-column: span 2;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card h3 {
+    color: #007BFF;
+    text-align: center;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  .right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+  }
+
+  .search-box {
+    display: flex;
+  }
+
+  .search-box input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+  }
+
+  .search-box button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #007BFF;
+    background: #007BFF;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+
+  .reservation-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .reservation-box label {
+    font-weight: bold;
+    color: #007BFF;
+  }
+
+  .reservation-box input {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+  }
+
+  .reservation-box button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #007BFF;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .center-address {
+    text-align: center;
+    padding: 12px 0;
+    background: #007BFF;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .bottom-bar {
+    margin-top: auto;
+  }
+
+  .bottom-bar div {
+    font-size: 14px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA SUPERIOR -->
+<div class="top-bar">
+  <img src="logo-techwise.png" alt="Logo Tech Wise">
+  <div>
+    <a href="carro.html">carro</a>
+    <a href="Comparación de móviles.html">Comparación de móviles</a>
+    <a href="Soporte técnico.html">Soporte técnico</a>
+    <a href="Últimos lanzamientos.html">Últimos lanzamientos</a>
+    <a href="Apertura.html">Apertura</a>
+    <a href="Cierre.html">Cierre</a>
+    <a href="login.html">Login</a>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="left-section">
+    <div class="section-title">Compra y Venta</div>
+
+    <!-- SOLO CAMBIO AQUÍ: cada card apunta a su página correspondiente -->
+    <a href="iphone.html" class="card-link"><div class="card"><h3>iPhone</h3></div></a>
+    <a href="Samsung.html" class="card-link"><div class="card"><h3>Samsung</h3></div></a>
+    <a href="Xiaomi.html" class="card-link"><div class="card"><h3>Xiaomi</h3></div></a>
+    <a href="Huawei.html" class="card-link"><div class="card"><h3>Huawei</h3></div></a>
+    <a href="googlepixel.html" class="card-link"><div class="card"><h3>google pixel</h3></div></a>
+    <a href="Motorola.html" class="card-link"><div class="card"><h3>Motorola</h3></div></a>
+    <a href="oppo.html" class="card-link"><div class="card"><h3>oppo</h3></div></a>
+    <a href="Tech Wise.html" class="card-link"><div class="card"><h3>Tech Wise</h3></div></a>
+  </div>
+
+  <div class="right-section">
+    <div class="search-box">
+      <input type="text" placeholder="Buscar móvil...">
+      <button>Buscar</button>
+    </div>
+
+    <div class="reservation-box">
+      <label for="date">Selecciona fecha:</label>
+      <input type="text" id="date" placeholder="YYYY-MM-DD">
+
+      <label for="time">Selecciona hora:</label>
+      <input type="text" id="time" placeholder="HH:MM">
+
+      <button>Reservar reparación</button>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="bottom-bar">
+  <div>Tech Wise</div>
+<div class="center-address">Calle Corcega 31</div>
+  <div>
+    Tel: 634 578 952<br>
+    Email: techwise@gmail.com
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>iPhone - Tech Wise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+}
+
+.top-bar {
+  background: #007BFF;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.cart-count {
+  background: red;
+  border-radius: 50%;
+  padding: 3px 8px;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  color: #007BFF;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 0 30px 40px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  <div>📱 iPhone</div>
+  <div>
+    <a href="index.html">Inicio</a>
+    <a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
+  </div>
+</div>
+
+<h1>iPhone disponibles</h1>
+
+<div class="grid">
+
+<!-- iPhone 15 -->
+<div class="card">
+<img src="descarga.png">
+<h3>iPhone 15 Pro Max</h3>
+<div class="price">1499 €</div>
+<button onclick="add('iPhone 15 Pro Max',1499)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="descarga1.png">
+<h3>iPhone 15 Pro</h3>
+<div class="price">1299 €</div>
+<button onclick="add('iPhone 15 Pro',1299)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="descarga2.png">
+<h3>iPhone 15</h3>
+<div class="price">999 €</div>
+<button onclick="add('iPhone 15',999)">Añadir</button>
+</div>
+
+<!-- iPhone 14 -->
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_14/iphone_14_PNG6.png">
+<h3>iPhone 14 Pro Max</h3>
+<div class="price">1299 €</div>
+<button onclick="add('iPhone 14 Pro Max',1299)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_14/iphone_14_PNG8.png">
+<h3>iPhone 14 Pro</h3>
+<div class="price">1099 €</div>
+<button onclick="add('iPhone 14 Pro',1099)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_14/iphone_14_PNG10.png">
+<h3>iPhone 14</h3>
+<div class="price">899 €</div>
+<button onclick="add('iPhone 14',899)">Añadir</button>
+</div>
+
+<!-- iPhone 13 -->
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_13/iphone_13_PNG10.png">
+<h3>iPhone 13 Pro Max</h3>
+<div class="price">1099 €</div>
+<button onclick="add('iPhone 13 Pro Max',1099)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_13/iphone_13_PNG12.png">
+<h3>iPhone 13 Pro</h3>
+<div class="price">999 €</div>
+<button onclick="add('iPhone 13 Pro',999)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_13/iphone_13_PNG15.png">
+<h3>iPhone 13</h3>
+<div class="price">799 €</div>
+<button onclick="add('iPhone 13',799)">Añadir</button>
+</div>
+
+<!-- iPhone 12 -->
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_12/iphone_12_PNG28.png">
+<h3>iPhone 12 Pro Max</h3>
+<div class="price">899 €</div>
+<button onclick="add('iPhone 12 Pro Max',899)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_12/iphone_12_PNG25.png">
+<h3>iPhone 12</h3>
+<div class="price">699 €</div>
+<button onclick="add('iPhone 12',699)">Añadir</button>
+</div>
+
+<!-- iPhone 11 -->
+<div class="card">
+<img src="https://pngimg.com/uploads/iphone_11/iphone_11_PNG44.png">
+<h3>iPhone 11 Pro</h3>
+<div class="price">599 €</div>
+<button onclick="add('iPhone 11 Pro',599)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="descarga4.png">
+<h3>iPhone 11</h3>
+<div class="price">499 €</div>
+<button onclick="add('iPhone 11',499)">Añadir</button>
+</div>
+
+<!-- iPhone SE -->
+<div class="card">
+<img src="descargaes.png">
+<h3>iPhone SE (2022)</h3>
+<div class="price">429 €</div>
+<button onclick="add('iPhone SE 2022',429)">Añadir</button>
+</div>
+
+</div>
+
+<script>
+function add(nombre, precio) {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  carrito.push({ nombre, precio });
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarContador();
+}
+
+function actualizarContador() {
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  document.getElementById("contador").textContent = carrito.length;
+}
+
+actualizarContador();
+</script>
+
+</body>
+</html>

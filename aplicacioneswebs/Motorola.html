@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Motorola - Tech Wise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{font-family:Arial;background:#f4f6f8;margin:0}
+.top-bar{background:#007BFF;color:#fff;padding:15px 30px;display:flex;justify-content:space-between}
+.top-bar a{color:white;text-decoration:none;margin-left:15px}
+.cart-count{background:red;border-radius:50%;padding:3px 8px;font-size:12px}
+h1{text-align:center;color:#007BFF;margin:30px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding:0 30px 40px}
+.card{background:white;padding:15px;border-radius:12px;box-shadow:0 6px 15px rgba(0,0,0,.1);text-align:center}
+.card img{width:100%;height:180px;object-fit:contain}
+.price{font-weight:bold;margin:10px 0}
+button{background:#007BFF;color:white;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+<div>📱 Motorola</div>
+<div>
+<a href="index.html">Inicio</a>
+<a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
+</div>
+</div>
+
+<h1>Motorola</h1>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Motorola_Edge_40.png">
+<h3>Motorola Edge 40 Pro</h3>
+<div class="price">899 €</div>
+<button onclick="add('Motorola Edge 40 Pro',899)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/motorola_edge_30/motorola_edge_30_PNG5.png">
+<h3>Motorola Edge 30</h3>
+<div class="price">499 €</div>
+<button onclick="add('Motorola Edge 30',499)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/motorola_g84/motorola_g84_PNG5.png">
+<h3>Motorola G84</h3>
+<div class="price">299 €</div>
+<button onclick="add('Motorola G84',299)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/motorola_g73/motorola_g73_PNG5.png">
+<h3>Motorola G73</h3>
+<div class="price">249 €</div>
+<button onclick="add('Motorola G73',249)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/motorola_g54/motorola_g54_PNG5.png">
+<h3>Motorola G54</h3>
+<div class="price">199 €</div>
+<button onclick="add('Motorola G54',199)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/motorola_g32/motorola_g32_PNG5.png">
+<h3>Motorola G32</h3>
+<div class="price">169 €</div>
+<button onclick="add('Motorola G32',169)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/motorola_e40/motorola_e40_PNG5.png">
+<h3>Motorola E40</h3>
+<div class="price">129 €</div>
+<button onclick="add('Motorola E40',129)">Añadir</button>
+</div>
+
+<div class="card">
+<img src="https://pngimg.com/uploads/motorola_razr_40/motorola_razr_40_PNG5.png">
+<h3>Motorola Razr 40</h3>
+<div class="price">999 €</div>
+<button onclick="add('Motorola Razr 40',999)">Añadir</button>
+</div>
+
+</div>
+
+<script>
+function add(n,p){
+ let c = JSON.parse(localStorage.getItem("carrito")) || [];
+ c.push({nombre:n,precio:p});
+ localStorage.setItem("carrito",JSON.stringify(c));
+ document.getElementById("contador").textContent = c.length;
+}
+document.getElementById("contador").textContent =
+(JSON.parse(localStorage.getItem("carrito"))||[]).length;
+</script>
+
+</body>
+</html>
