@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oppo - Tech Wise</title>
+  <title>Novedades - Tech Wise</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -13,7 +13,7 @@
   <div class="top-bar">
     <div class="logo">
       <img src="logo-techwise.png" alt="Logo Tech Wise">
-      <span>Oppo</span>
+      <span>Novedades</span>
     </div>
     <nav class="nav">
       <a href="index.html">Inicio</a>
@@ -24,9 +24,9 @@
   </div>
 
   <div class="content">
-    <h1 class="page-title">Oppo</h1>
+    <h1 class="page-title">Últimos Lanzamientos</h1>
     
-    <div class="grid" id="oppoGrid"></div>
+    <div class="grid" id="novedadesGrid"></div>
   </div>
 
   <div class="bottom-bar">
@@ -38,21 +38,30 @@
   <script>
     const moviles = JSON.parse(localStorage.getItem("moviles")) || [];
     
-    const oppoDefault = [
-      { modelo: "Find X8 Pro", precio: 999, imagen: "OppoFindX6Pro.png", fecha: "2024-10-24" },
-      { modelo: "Find X8", precio: 799, imagen: "OppoFindX6Pro.png", fecha: "2024-10-24" },
-      { modelo: "Find X7 Pro", precio: 799, imagen: "OppoFindX6Pro.png", fecha: "2024-01-08" },
-      { modelo: "Find X7", precio: 649, imagen: "OppoFindX6Pro.png", fecha: "2024-01-08" },
-      { modelo: "Reno13 Pro", precio: 599, imagen: "OppoReno10.png", fecha: "2025-01-09" },
-      { modelo: "Reno13", precio: 499, imagen: "OppoReno10.png", fecha: "2025-01-09" },
-      { modelo: "Reno12 Pro", precio: 499, imagen: "OppoReno10.png", fecha: "2024-06-21" },
-      { modelo: "Reno12", precio: 429, imagen: "OppoReno10.png", fecha: "2024-06-21" },
-      { modelo: "A98 5G", precio: 229, imagen: "OppoA98.png", fecha: "2023-07-19" },
-      { modelo: "A78 5G", precio: 179, imagen: "OppoA78.png", fecha: "2023-07-19" }
+    const ultimosLanzamientos = [
+      { modelo: "iPhone 16 Pro Max", precio: 1319, imagen: "descarga.png", marca: "iphone", fecha: "2024-09-20" },
+      { modelo: "iPhone 16", precio: 899, imagen: "descarga2.png", marca: "iphone", fecha: "2024-09-20" },
+      { modelo: "iPhone 16e", precio: 699, imagen: "descarga1.png", marca: "iphone", fecha: "2025-02-20" },
+      { modelo: "Galaxy S25 Ultra", precio: 1319, imagen: "samsugultra24.png", marca: "samsung", fecha: "2025-01-22" },
+      { modelo: "Galaxy S25+", precio: 999, imagen: "samsug23.png", marca: "samsung", fecha: "2025-01-22" },
+      { modelo: "Galaxy S25", precio: 849, imagen: "samsung22.png", marca: "samsung", fecha: "2025-01-22" },
+      { modelo: "Galaxy A56", precio: 449, imagen: "samsugA54.png", marca: "samsung", fecha: "2025-03-02" },
+      { modelo: "Xiaomi 15 Ultra", precio: 1199, imagen: "Xiaomi14.png", marca: "xiaomi", fecha: "2025-02-27" },
+      { modelo: "Xiaomi 15", precio: 899, imagen: "Xiaomi14.png", marca: "xiaomi", fecha: "2025-02-27" },
+      { modelo: "Redmi Note 14 Pro", precio: 349, imagen: "redminote13.png", marca: "xiaomi", fecha: "2025-12-30" },
+      { modelo: "Pixel 9a", precio: 599, imagen: "Pixel8.png", marca: "google", fecha: "2025-03-19" },
+      { modelo: "Pixel 9 Pro XL", precio: 1099, imagen: "Pixel8Pro.png", marca: "google", fecha: "2024-08-13" },
+      { modelo: "Edge 50 Fusion", precio: 399, imagen: "MotorolaEdge40Pro.png", marca: "motorola", fecha: "2025-06-17" },
+      { modelo: "Edge 50 Pro", precio: 700, imagen: "MotorolaEdge40Pro.png", marca: "motorola", fecha: "2024-04-03" },
+      { modelo: "Find X8 Pro", precio: 999, imagen: "OppoFindX6Pro.png", marca: "oppo", fecha: "2024-10-24" },
+      { modelo: "Find X8", precio: 799, imagen: "OppoFindX6Pro.png", marca: "oppo", fecha: "2024-10-24" },
+      { modelo: "Reno13 Pro", precio: 599, imagen: "OppoReno10.png", marca: "oppo", fecha: "2025-01-09" },
+      { modelo: "Pura 70 Ultra", precio: 1199, imagen: "huaweip60.png", marca: "huawei", fecha: "2024-04-18" },
+      { modelo: "Pura 70 Pro", precio: 899, imagen: "huaweip60.png", marca: "huawei", fecha: "2024-04-18" },
+      { modelo: "Mate 70 Pro", precio: 1099, imagen: "HuaweiMate60.png", marca: "huawei", fecha: "2025-10-22" }
     ];
 
-    const oppoGuardados = moviles.filter(m => m.marca === "oppo");
-    const oppoTodos = [...oppoGuardados, ...oppoDefault];
+    const todos = [...moviles, ...ultimosLanzamientos];
 
     function getDescuento(fechaStr) {
       const fecha = new Date(fechaStr);
@@ -62,8 +71,8 @@
     }
 
     function mostrar() {
-      const container = document.getElementById("oppoGrid");
-      container.innerHTML = oppoTodos.map(m => {
+      const container = document.getElementById("novedadesGrid");
+      container.innerHTML = todos.map(m => {
         const descuento = m.fecha ? getDescuento(m.fecha) : 0;
         const precioFinal = descuento > 0 ? Math.round(m.precio * (1 - descuento / 100)) : m.precio;
         return `
@@ -92,7 +101,7 @@
 
     function comparar(nombre, imagen) {
       const comp = JSON.parse(localStorage.getItem("comparar")) || [];
-      if (comp.length >= 3) { alert("Máximo 3 móviles para comparar"); return; }
+      if (comp.length >= 3) { alert("Máximo 3 móviles"); return; }
       if (!comp.find(x => x.nombre === nombre)) {
         comp.push({ nombre, imagen });
         localStorage.setItem("comparar", JSON.stringify(comp));

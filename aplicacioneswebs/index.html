@@ -206,6 +206,7 @@
       <a href="Últimos lanzamientos.html">Últimos lanzamientos</a>
       <a href="Horario.html">Horario</a>
       <a href="login.html">Login</a>
+      <a href="#" id="cerrarSesion" onclick="cerrarSesion(event)" style="display:none;color:#ffeb3b;">Cerrar sesión</a>
     </div>
   </div>
 
@@ -220,7 +221,7 @@
           <h3>iPhone</h3>
         </div>
       </a>
-      <a href="Samsung.html" class="card-link">
+      <a href="samsung.html" class="card-link">
         <div class="card">
           <h3>Samsung</h3>
         </div>
@@ -235,7 +236,7 @@
           <h3>Huawei</h3>
         </div>
       </a>
-      <a href="googlepixel.html" class="card-link">
+      <a href="GooglePixel.html" class="card-link">
         <div class="card">
           <h3>google pixel</h3>
         </div>
@@ -245,7 +246,7 @@
           <h3>Motorola</h3>
         </div>
       </a>
-      <a href="oppo.html" class="card-link">
+      <a href="Oppo.html" class="card-link">
         <div class="card">
           <h3>oppo</h3>
         </div>
@@ -258,7 +259,7 @@
     </div>
 
     <div class="right-section featured-phone" style="align-items: center; justify-content: center;">
-      <h2 style="color: #007BFF; margin-bottom: 12px; text-align: center;">Último Lanzamiento</h2>
+      <h2 style="color: #007BFF; margin-bottom: 20px; text-align: center;">Último Lanzamiento</h2>
       <div class="card"
         style="width: 250px; background: rgb(246, 242, 242); padding: 15px; border-radius: 12px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);">
         <img src="samsugultra24.png" alt="Samsung Galaxy S24 Ultra"
@@ -290,6 +291,18 @@
       c.push({ nombre: n, precio: p });
       localStorage.setItem("carrito", JSON.stringify(c));
       alert("Añadido al carrito: " + n);
+    }
+
+    // Mostrar botón de cerrar sesión si está logueado
+    if (localStorage.getItem("logueado") === "true") {
+      document.getElementById("cerrarSesion").style.display = "inline";
+      document.querySelector('a[href="login.html"]').style.display = "none";
+    }
+
+    function cerrarSesion(e) {
+      e.preventDefault();
+      localStorage.removeItem("logueado");
+      window.location.href = "login.html";
     }
   </script>
 </body>

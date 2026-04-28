@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soporte - Tech Wise</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .contact-info {
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="logo">
+      <img src="logo-techwise.png" alt="Logo Tech Wise">
+      <span>Soporte</span>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="carro.html">Carro</a>
+    </nav>
+  </div>
+
+  <div class="content">
+    <h1 class="page-title">Soporte Técnico</h1>
+    
+    <form class="contact-form" onsubmit="enviar(event)">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono">
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Enviar</button>
+    </form>
+
+    <div class="contact-info">
+      <h3>Contacto</h3>
+      <p>Tel: 634 578 952</p>
+      <p>Email: techwise@gmail.com</p>
+      <p>Lunes a Sábado 09:00 - 18:00</p>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div>Tech Wise</div>
+    <div class="center-address">Calle Corcega 31</div>
+    <div>Tel: 634 578 952</div>
+  </div>
+
+  <script>
+    function enviar(e) {
+      e.preventDefault();
+      alert("Mensaje enviado. Te contactaremos pronto.");
+      e.target.reset();
+    }
+  </script>
+</body>
+
+</html>

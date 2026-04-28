@@ -2,220 +2,116 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Huawei - Tech Wise</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      font-family: Arial;
-      background: #f4f6f8;
-      margin: 0
-    }
-
-    .top-bar {
-      background: #007BFF;
-      color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between
-    }
-
-    .top-bar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px
-    }
-
-    .cart-count {
-      background: red;
-      border-radius: 50%;
-      padding: 3px 8px;
-      font-size: 12px
-    }
-
-    h1 {
-      text-align: center;
-      color: #007BFF;
-      margin: 30px 0
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 0 30px 40px
-    }
-
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, .1);
-      text-align: center
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain
-    }
-
-    .price {
-      font-weight: bold;
-      margin: 10px 0
-    }
-
-    button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
   <div class="top-bar">
-    <div>📱 Huawei</div>
-    <div>
+    <div class="logo">
+      <img src="logo-techwise.png" alt="Logo Tech Wise">
+      <span>Huawei</span>
+    </div>
+    <nav class="nav">
       <a href="index.html">Inicio</a>
       <a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
-      <a href="Comparacióndemóviles.html">Comparar <span id="contador-comp" class="cart-count">0</span></a>
-    </div>
+      <a href="Comparacióndemóviles.html">Comparar</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" class="login-link">Login</a>
+      <a href="#" class="cerrar-sesion" onclick="cerrarSesion(event)" style="display:none;color:#ffeb3b;">Cerrar sesión</a>
+    </nav>
   </div>
 
-  <h1>Huawei</h1>
-
-  <div class="grid">
-
-    <!-- Modelos principales -->
-    <div class="card">
-      <img src="huaweip60.png">
-      <h3>Huawei P60 Pro</h3>
-      <div class="price">999 €</div>
-      <button onclick="add('Huawei P60 Pro',999)">Añadir</button>
+  <div class="content">
+    <h1 class="page-title">Huawei</h1>
+    
+    <div class="featured" style="text-align:center;margin-bottom:30px;padding:20px;background:white;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <h2 style="color:var(--primary);margin-bottom:15px;">Último Lanzamiento</h2>
+      <img src="samsugultra24.png" alt="Galaxy S24 Ultra" style="width:200px;">
+      <h3 style="color:var(--primary);margin:15px 0;">Galaxy S24 Ultra</h3>
+      <div class="price" style="font-weight:bold;font-size:24px;margin-bottom:15px;">1399 €</div>
+      <button class="btn btn-primary" onclick="add('Samsung Galaxy S24 Ultra', 1399)">Añadir</button>
     </div>
-
-    <div class="card">
-      <img src="huaweip50.png">
-      <h3>Huawei P50</h3>
-      <div class="price">799 €</div>
-      <button onclick="add('Huawei P50',799)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="huaweinova11.png">
-      <h3>Huawei Nova 11</h3>
-      <div class="price">449 €</div>
-      <button onclick="add('Huawei Nova 11',449)">Añadir</button>
-    </div>
-
-    <!-- Nuevos modelos -->
-    <div class="card">
-      <img src="HuaweiP40.png">
-      <h3>Huawei P40</h3>
-      <div class="price">699 €</div>
-      <button onclick="add('Huawei P40',699)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="HuaweiP30.png">
-      <h3>Huawei P30</h3>
-      <div class="price">499 €</div>
-      <button onclick="add('Huawei P30',499)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="HuaweiMate50.png">
-      <h3>Huawei Mate 50</h3>
-      <div class="price">899 €</div>
-      <button onclick="add('Huawei Mate 50',899)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="HuaweiMate40.png">
-      <h3>Huawei Mate 40</h3>
-      <div class="price">749 €</div>
-      <button onclick="add('Huawei Mate 40',749)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="HuaweiNova10.png">
-      <h3>Huawei Nova 10</h3>
-      <div class="price">399 €</div>
-      <button onclick="add('Huawei Nova 10',399)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="HuaweiNova9.png">
-      <h3>Huawei Nova 9</h3>
-      <div class="price">349 €</div>
-      <button onclick="add('Huawei Nova 9',349)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="HuaweiY9.png">
-      <h3>Huawei Y9</h3>
-      <div class="price">229 €</div>
-      <button onclick="add('Huawei Y9',229)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="HuaweiY8.png">
-      <h3>Huawei Y8</h3>
-      <div class="price">199 €</div>
-      <button onclick="add('Huawei Y8',199)">Añadir</button>
-    </div>
-
+    
+    <div class="grid" id="huaweiGrid"></div>
   </div>
 
+  <div class="bottom-bar">
+    <div>Tech Wise</div>
+    <div class="center-address">Calle Corcega 31</div>
+    <div>Tel: 634 578 952</div>
+  </div>
+
+  <script src="sesion.js"></script>
   <script>
-    function add(n, p) {
-      let c = JSON.parse(localStorage.getItem("carrito")) || [];
-      c.push({ nombre: n, precio: p });
-      localStorage.setItem("carrito", JSON.stringify(c));
-      document.getElementById("contador").textContent = c.length;
-    }
-    document.getElementById("contador").textContent = (JSON.parse(localStorage.getItem("carrito")) || []).length;
+    const moviles = JSON.parse(localStorage.getItem("moviles")) || [];
+    
+    const huaweiDefault = [
+      { modelo: "Pura 70 Ultra", precio: 1199, imagen: "huaweip60.png", fecha: "2024-04-18" },
+      { modelo: "Pura 70 Pro", precio: 899, imagen: "huaweip60.png", fecha: "2024-04-18" },
+      { modelo: "Pura 70", precio: 699, imagen: "huaweip60.png", fecha: "2024-04-18" },
+      { modelo: "Mate 70 Pro", precio: 1099, imagen: "HuaweiMate60.png", fecha: "2025-10-22" },
+      { modelo: "Mate 60 Pro", precio: 899, imagen: "HuaweiMate60.png", fecha: "2023-09-25" },
+      { modelo: "Mate 60", precio: 699, imagen: "HuaweiMate60.png", fecha: "2023-09-25" },
+      { modelo: "Nova 13i", precio: 299, imagen: "huaweinova11.png", fecha: "2024-03-25" },
+      { modelo: "Nova 12s", precio: 399, imagen: "huaweinova11.png", fecha: "2023-12-26" }
+    ];
 
-    function comparar(n, img) {
-      let comp = JSON.parse(localStorage.getItem("comparar")) || [];
-      if (comp.length >= 3) { alert("Solo puedes comparar hasta 3 móviles."); return; }
-      if (!comp.find(x => x.nombre === n)) {
-        comp.push({ nombre: n, img: img });
+    const huaweiGuardados = moviles.filter(m => m.marca === "huawei");
+    const huaweiTodos = [...huaweiGuardados, ...huaweiDefault];
+
+    function getDescuento(fechaStr) {
+      const fecha = new Date(fechaStr);
+      const ahora = new Date();
+      const diffMeses = (ahora - fecha) / (1000 * 60 * 60 * 24 * 30);
+      return Math.min(Math.floor(diffMeses / 4) * 10, 10);
+    }
+
+    function mostrar() {
+      const container = document.getElementById("huaweiGrid");
+      container.innerHTML = huaweiTodos.map(m => {
+        const descuento = m.fecha ? getDescuento(m.fecha) : 0;
+        const precioFinal = descuento > 0 ? Math.round(m.precio * (1 - descuento / 100)) : m.precio;
+        return `
+        <div class="card">
+          <img src="${m.imagen}" alt="${m.modelo}">
+          <h3>${m.modelo}</h3>
+          ${descuento > 0 ? `<div class="price" style="text-decoration:line-through;color:#999;">${m.precio} €</div>` : ''}
+          <div class="price">${precioFinal} €${descuento > 0 ? ` <span style="color:var(--danger);font-size:14px;">(-${descuento}%)</span>` : ''}</div>
+          <div class="buttons">
+            <button class="btn btn-primary" onclick="add('${m.modelo}', ${precioFinal})">Añadir</button>
+            <button class="btn btn-secondary" onclick="comparar('${m.modelo}', '${m.imagen}')">Comparar</button>
+          </div>
+        </div>
+      `}).join("");
+      
+      document.getElementById("contador").textContent = (JSON.parse(localStorage.getItem("carrito")) || []).length;
+    }
+
+    function add(nombre, precio) {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.push({ nombre, precio });
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      document.getElementById("contador").textContent = carrito.length;
+      alert("Añadido: " + nombre);
+    }
+
+    function comparar(nombre, imagen) {
+      const comp = JSON.parse(localStorage.getItem("comparar")) || [];
+      if (comp.length >= 3) { alert("Máximo 3 móviles para comparar"); return; }
+      if (!comp.find(x => x.nombre === nombre)) {
+        comp.push({ nombre, imagen });
         localStorage.setItem("comparar", JSON.stringify(comp));
+        alert("Añadido a comparar: " + nombre);
       } else {
-        alert("Este móvil ya está en la comparación.");
+        alert("Ya está en la comparación");
       }
-      let span = document.getElementById("contador-comp");
-      if (span) span.textContent = JSON.parse(localStorage.getItem("comparar")).length;
     }
-    window.addEventListener('DOMContentLoaded', () => {
-      let span = document.getElementById("contador-comp");
-      if (span) span.textContent = (JSON.parse(localStorage.getItem("comparar")) || []).length;
 
-      document.querySelectorAll('.card').forEach(card => {
-        let imgEl = card.querySelector('img');
-        let addBtn = card.querySelector('button');
-        if (imgEl && addBtn && addBtn.getAttribute('onclick')) {
-          let img = imgEl.getAttribute('src');
-          let match = addBtn.getAttribute('onclick').match(/add\('([^']+)'/);
-          if (match) {
-            let nombre = match[1];
-            let compBtn = document.createElement('button');
-            compBtn.textContent = 'Comparar';
-            compBtn.style.background = '#6c757d';
-            compBtn.style.marginLeft = '5px';
-            compBtn.onclick = function () { comparar(nombre, img); };
-            addBtn.parentNode.insertBefore(compBtn, addBtn.nextSibling);
-          }
-        }
-      });
-    });
+    mostrar();
   </script>
 </body>
 

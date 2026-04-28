@@ -2,229 +2,120 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Xiaomi - Tech Wise</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      font-family: Arial;
-      background: #f4f6f8;
-      margin: 0
-    }
-
-    .top-bar {
-      background: #007BFF;
-      color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between
-    }
-
-    .top-bar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px
-    }
-
-    .cart-count {
-      background: red;
-      border-radius: 50%;
-      padding: 3px 8px;
-      font-size: 12px
-    }
-
-    h1 {
-      text-align: center;
-      color: #007BFF;
-      margin: 30px 0
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 0 30px 40px
-    }
-
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, .1);
-      text-align: center
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain
-    }
-
-    .price {
-      font-weight: bold;
-      margin: 10px 0
-    }
-
-    button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
   <div class="top-bar">
-    <div>📱 Xiaomi</div>
-    <div>
+    <div class="logo">
+      <img src="logo-techwise.png" alt="Logo Tech Wise">
+      <span>Xiaomi</span>
+    </div>
+    <nav class="nav">
       <a href="index.html">Inicio</a>
       <a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
-      <a href="Comparacióndemóviles.html">Comparar <span id="contador-comp" class="cart-count">0</span></a>
-    </div>
+      <a href="Comparacióndemóviles.html">Comparar</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" class="login-link">Login</a>
+      <a href="#" class="cerrar-sesion" onclick="cerrarSesion(event)" style="display:none;color:#ffeb3b;">Cerrar sesión</a>
+    </nav>
   </div>
 
-  <h1>Xiaomi</h1>
-
-  <div class="grid">
-
-    <!-- Modelos principales -->
-    <div class="card">
-      <img src="Xiaomi14.png">
-      <h3>Xiaomi 14</h3>
-      <div class="price">899 €</div>
-      <button onclick="add('Xiaomi 14',899)">Añadir</button>
+  <div class="content">
+    <h1 class="page-title">Xiaomi</h1>
+    
+    <div class="featured" style="text-align:center;margin-bottom:30px;padding:20px;background:white;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <h2 style="color:var(--primary);margin-bottom:15px;">Último Lanzamiento</h2>
+      <img src="samsugultra24.png" alt="Galaxy S24 Ultra" style="width:200px;">
+      <h3 style="color:var(--primary);margin:15px 0;">Galaxy S24 Ultra</h3>
+      <div class="price" style="font-weight:bold;font-size:24px;margin-bottom:15px;">1399 €</div>
+      <button class="btn btn-primary" onclick="add('Samsung Galaxy S24 Ultra', 1399)">Añadir</button>
     </div>
-
-    <div class="card">
-      <img src="Xiaomi13.png">
-      <h3>Xiaomi 13</h3>
-      <div class="price">749 €</div>
-      <button onclick="add('Xiaomi 13',749)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="redminote13.png">
-      <h3>Redmi Note 13</h3>
-      <div class="price">299 €</div>
-      <button onclick="add('Redmi Note 13',299)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="pocoX6.png">
-      <h3>Poco X6</h3>
-      <div class="price">249 €</div>
-      <button onclick="add('Poco X6',249)">Añadir</button>
-    </div>
-
-    <!-- Nuevos modelos -->
-    <div class="card">
-      <img src="xiaomi12.png">
-      <h3>Xiaomi 12</h3>
-      <div class="price">699 €</div>
-      <button onclick="add('Xiaomi 12',699)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="xiaomi12pro.png">
-      <h3>Xiaomi 12 Pro</h3>
-      <div class="price">799 €</div>
-      <button onclick="add('Xiaomi 12 Pro',799)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="redmi12pro.png">
-      <h3>Redmi Note 12</h3>
-      <div class="price">279 €</div>
-      <button onclick="add('Redmi Note 12',279)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="redmi11pro.png">
-      <h3>Redmi Note 11</h3>
-      <div class="price">239 €</div>
-      <button onclick="add('Redmi Note 11',239)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="pocof5.png">
-      <h3>Poco F5</h3>
-      <div class="price">349 €</div>
-      <button onclick="add('Poco F5',349)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="pocoM5.png">
-      <h3>Poco M5</h3>
-      <div class="price">179 €</div>
-      <button onclick="add('Poco M5',179)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="redmi10.png">
-      <h3>Redmi 10</h3>
-      <div class="price">149 €</div>
-      <button onclick="add('Redmi 10',149)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="redmi11.png">
-      <h3>Redmi 11</h3>
-      <div class="price">179 €</div>
-      <button onclick="add('Redmi 11',179)">Añadir</button>
-    </div>
-
+    
+    <div class="grid" id="xiaomiGrid"></div>
   </div>
 
+  <div class="bottom-bar">
+    <div>Tech Wise</div>
+    <div class="center-address">Calle Corcega 31</div>
+    <div>Tel: 634 578 952</div>
+  </div>
+
+  <script src="sesion.js"></script>
   <script>
-    function add(n, p) {
-      let c = JSON.parse(localStorage.getItem("carrito")) || [];
-      c.push({ nombre: n, precio: p });
-      localStorage.setItem("carrito", JSON.stringify(c));
-      document.getElementById("contador").textContent = c.length;
+    const moviles = JSON.parse(localStorage.getItem("moviles")) || [];
+    
+    const xiaomiDefault = [
+      { modelo: "Xiaomi 15 Ultra", precio: 1199, imagen: "Xiaomi14.png", fecha: "2025-02-27" },
+      { modelo: "Xiaomi 15", precio: 899, imagen: "Xiaomi14.png", fecha: "2025-02-27" },
+      { modelo: "Xiaomi 14 Ultra", precio: 999, imagen: "Xiaomi14.png", fecha: "2024-02-25" },
+      { modelo: "Xiaomi 14", precio: 749, imagen: "Xiaomi13.png", fecha: "2024-02-25" },
+      { modelo: "Xiaomi 13 Ultra", precio: 899, imagen: "Xiaomi13.png", fecha: "2023-12-11" },
+      { modelo: "Xiaomi 13", precio: 699, imagen: "Xiaomi13.png", fecha: "2023-12-11" },
+      { modelo: "Redmi Note 14 Pro", precio: 349, imagen: "redminote13.png", fecha: "2025-12-30" },
+      { modelo: "Redmi Note 14", precio: 249, imagen: "redminote13.png", fecha: "2025-12-30" },
+      { modelo: "Poco X7 Pro", precio: 399, imagen: "pocoX6.png", fecha: "2025-01-09" },
+      { modelo: "Poco X7", precio: 299, imagen: "pocoX6.png", fecha: "2025-01-09" },
+      { modelo: "Redmi 14", precio: 179, imagen: "redmi12pro.png", fecha: "2025-06-24" },
+      { modelo: "Redmi 13", precio: 149, imagen: "redmi12pro.png", fecha: "2024-07-15" }
+    ];
+
+    const xiaomiGuardados = moviles.filter(m => m.marca === "xiaomi");
+    const xiaomiTodos = [...xiaomiGuardados, ...xiaomiDefault];
+
+    function getDescuento(fechaStr) {
+      const fecha = new Date(fechaStr);
+      const ahora = new Date();
+      const diffMeses = (ahora - fecha) / (1000 * 60 * 60 * 24 * 30);
+      return Math.min(Math.floor(diffMeses / 4) * 10, 10);
     }
-    document.getElementById("contador").textContent = (JSON.parse(localStorage.getItem("carrito")) || []).length;
-  </script>
 
-  <script>
-    function comparar(n, img) {
-      let comp = JSON.parse(localStorage.getItem("comparar")) || [];
-      if (comp.length >= 3) { alert("Solo puedes comparar hasta 3 móviles."); return; }
-      if (!comp.find(x => x.nombre === n)) {
-        comp.push({ nombre: n, img: img });
+    function mostrarXiaomi() {
+      const container = document.getElementById("xiaomiGrid");
+      container.innerHTML = xiaomiTodos.map(m => {
+        const descuento = m.fecha ? getDescuento(m.fecha) : 0;
+        const precioFinal = descuento > 0 ? Math.round(m.precio * (1 - descuento / 100)) : m.precio;
+        return `
+        <div class="card">
+          <img src="${m.imagen}" alt="${m.modelo}">
+          <h3>${m.modelo}</h3>
+          ${descuento > 0 ? `<div class="price" style="text-decoration:line-through;color:#999;">${m.precio} €</div>` : ''}
+          <div class="price">${precioFinal} €${descuento > 0 ? ` <span style="color:var(--danger);font-size:14px;">(-${descuento}%)</span>` : ''}</div>
+          <div class="buttons">
+            <button class="btn btn-primary" onclick="add('${m.modelo}', ${precioFinal})">Añadir</button>
+            <button class="btn btn-secondary" onclick="comparar('${m.modelo}', '${m.imagen}')">Comparar</button>
+          </div>
+        </div>
+      `}).join("");
+      
+      document.getElementById("contador").textContent = (JSON.parse(localStorage.getItem("carrito")) || []).length;
+    }
+
+    function add(nombre, precio) {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito.push({ nombre, precio });
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      document.getElementById("contador").textContent = carrito.length;
+      alert("Añadido: " + nombre);
+    }
+
+    function comparar(nombre, imagen) {
+      const comp = JSON.parse(localStorage.getItem("comparar")) || [];
+      if (comp.length >= 3) { alert("Máximo 3 móviles para comparar"); return; }
+      if (!comp.find(x => x.nombre === nombre)) {
+        comp.push({ nombre, imagen });
         localStorage.setItem("comparar", JSON.stringify(comp));
+        alert("Añadido a comparar: " + nombre);
       } else {
-        alert("Este móvil ya está en la comparación.");
+        alert("Ya está en la comparación");
       }
-      let span = document.getElementById("contador-comp");
-      if (span) span.textContent = JSON.parse(localStorage.getItem("comparar")).length;
     }
-    window.addEventListener('DOMContentLoaded', () => {
-      let span = document.getElementById("contador-comp");
-      if (span) span.textContent = (JSON.parse(localStorage.getItem("comparar")) || []).length;
 
-      document.querySelectorAll('.card').forEach(card => {
-        let imgEl = card.querySelector('img');
-        let addBtn = card.querySelector('button');
-        if (imgEl && addBtn && addBtn.getAttribute('onclick')) {
-          let img = imgEl.getAttribute('src');
-          let match = addBtn.getAttribute('onclick').match(/add\('([^']+)'/);
-          if (match) {
-            let nombre = match[1];
-            let compBtn = document.createElement('button');
-            compBtn.textContent = 'Comparar';
-            compBtn.style.background = '#6c757d';
-            compBtn.style.marginLeft = '5px';
-            compBtn.onclick = function () { comparar(nombre, img); };
-            addBtn.parentNode.insertBefore(compBtn, addBtn.nextSibling);
-          }
-        }
-      });
-    });
+    mostrarXiaomi();
   </script>
 </body>
 

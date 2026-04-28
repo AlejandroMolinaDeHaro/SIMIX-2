@@ -2,74 +2,26 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comparador de Móviles - Tech Wise</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparador - Tech Wise</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .top-bar {
-      background: #007BFF;
-      color: #fff;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .top-bar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-      font-size: 16px;
-    }
-
-    .top-bar a:hover {
-      text-decoration: underline;
-    }
-
-    .cart-count {
-      background: red;
-      border-radius: 50%;
-      padding: 3px 8px;
-      font-size: 12px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #007BFF;
-      margin: 30px 0 10px 0;
-    }
-
-    p.subtitle {
-      text-align: center;
-      color: #555;
-      margin-bottom: 30px;
-    }
-
     .comparison-container {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 0 30px 40px;
+      gap: 25px;
+      padding: 20px;
       flex-wrap: wrap;
-      flex: 1;
     }
 
     .compare-card {
-      background: white;
+      background: var(--white);
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       text-align: center;
-      width: 250px;
+      width: 280px;
       display: flex;
       flex-direction: column;
     }
@@ -84,44 +36,28 @@
     .stat-group {
       margin: 10px 0;
       text-align: left;
-      background: #fdfdfd;
-      padding: 10px;
+      background: #f8f9fa;
+      padding: 12px;
       border-radius: 8px;
-      border: 1px solid #eee;
     }
 
     .stat-group strong {
-      color: #007BFF;
+      color: var(--primary);
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       font-size: 14px;
     }
 
     .stat-group span {
       color: #333;
-      font-size: 14px;
-    }
-
-    .btn-remove {
-      margin-top: auto;
-      background: #ff4d4d;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn-remove:hover {
-      background: #cc0000;
+      font-size: 13px;
     }
 
     .empty-state {
       text-align: center;
       font-size: 18px;
-      color: #555;
-      margin-top: 50px;
+      color: #666;
+      padding: 50px;
       width: 100%;
     }
   </style>
@@ -130,65 +66,79 @@
 <body>
 
   <div class="top-bar">
-    <div>📊 Comparador Tech Wise</div>
-    <div>
+    <div class="logo">
+      <img src="logo-techwise.png" alt="Logo Tech Wise">
+      <span>Comparador</span>
+    </div>
+    <nav class="nav">
       <a href="index.html">Inicio</a>
       <a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
-    </div>
+      <a href="admin.html">Admin</a>
+    </nav>
   </div>
 
-  <h1>Comparador de Móviles</h1>
-  <p class="subtitle">Descubre qué teléfono se ajusta más a lo que necesitas</p>
+  <div class="content">
+    <h1 class="page-title">Comparador de Móviles</h1>
+    <p style="text-align:center;color:#666;margin-bottom:20px;">Selecciona hasta 3 móviles para comparar</p>
+    
+    <div class="comparison-container" id="comparison-container"></div>
+  </div>
 
-  <div class="comparison-container" id="comparison-container">
-    <!-- Las tarjetas se generan por JS -->
+  <div class="bottom-bar">
+    <div>Tech Wise</div>
+    <div class="center-address">Calle Corcega 31</div>
+    <div>Tel: 634 578 952</div>
   </div>
 
   <script>
-    // Base de datos simplificada para gente sin experiencia
     const bbddStats = {
-      // Apple
-      "iPhone 15 Pro Max": { bateria: "Dura 1 día y medio tranquilamente", camara: "Excelente para fotos profesionales", pantalla: "Muy grande y colores vivos", valor: "Muy Caro (Gama Premium)" },
-      "iPhone 15": { bateria: "Dura 1 día entero", camara: "Muy buenas fotos normales", pantalla: "Buena calidad, tamaño ideal", valor: "Caro (Gama Alta)" },
-      "iPhone 14": { bateria: "Dura 1 día entero", camara: "Buenas fotos estándar", pantalla: "Buena calidad", valor: "Precio Medio-Alto" },
-      "iPhone 13": { bateria: "Casi 1 día entero", camara: "Fotos buenas de día", pantalla: "Buena calidad", valor: "Buen Precio (Antiguo)" },
+      "iPhone 15 Pro Max": { bateria: "Dura 1 día y medio", camara: "Excelente para fotos", pantalla: "Muy grande y viva", valor: "Premium (1499€)" },
+      "iPhone 15 Pro": { bateria: "Dura 1 día", camara: "Muy buena", pantalla: "Excelente", valor: "Alto (1299€)" },
+      "iPhone 15": { bateria: "Dura 1 día", camara: "Muy buenas fotos", pantalla: "Ideal", valor: "Alto (999€)" },
+      "iPhone 14 Pro Max": { bateria: "1 día", camara: "Buena", pantalla: "Grande", valor: "Alto (1299€)" },
+      "iPhone 14": { bateria: "1 día", camara: "Buena", pantalla: "Buena", valor: "Medio (899€)" },
+      "iPhone SE": { bateria: "1 día", camara: "Normal", pantalla: "Pequeña", valor: "Económico (429€)" },
 
-      // Samsung
-      "Samsung Galaxy S24 Ultra": { bateria: "Dura hasta 2 días", camara: "La mejor para fotos lejanas (zoom)", pantalla: "Inmensa y muy brillante", valor: "Muy Caro (Premium)" },
-      "Samsung Galaxy S23": { bateria: "Dura 1 día", camara: "Muy buena calidad y color", pantalla: "Colores muy vivos", valor: "Alto (Gama Alta)" },
-      "Samsung Galaxy S22": { bateria: "Dura un poco menos del día", camara: "Buenas fotos", pantalla: "Buena, colores fuertes", valor: "Medio" },
-      "Samsung Galaxy A54": { bateria: "Dura 1 día y pico", camara: "Normal, bien de día", pantalla: "Buena", valor: "Económico (Calidad/Precio)" },
-      "Samsung Galaxy S21": { bateria: "Dura 1 día justo", camara: "Buena para uso general", pantalla: "Muy buena", valor: "Buen precio (Antiguo)" },
-      "Samsung Galaxy S20": { bateria: "Dura el día", camara: "Fotos decentes", pantalla: "Buena claridad", valor: "Bajo (Antiguo)" },
-      "Samsung Galaxy Note 20": { bateria: "Dura 1 día", camara: "Buenas fotos", pantalla: "Grande con lápiz", valor: "Medio" },
-      "Samsung Galaxy Note 10": { bateria: "Dura poco", camara: "Fotos normalitas", pantalla: "Buena pero antigua", valor: "Bajo (Muy antiguo)" },
-      "Samsung Galaxy A52": { bateria: "Dura 1 día de sobra", camara: "Fotos simples", pantalla: "Aceptable", valor: "Muy Económico" },
-      "Samsung Galaxy A72": { bateria: "Dura 1 día y medio", camara: "Fotos simples", pantalla: "Grande y aceptable", valor: "Económico" },
-      "Samsung Galaxy Z Fold 4": { bateria: "Dura 1 día justo", camara: "Muy buenas fotos", pantalla: "Se abre y es como una tablet", valor: "Extremadamente Caro" },
-      "Samsung Galaxy Z Flip 4": { bateria: "Dura poco menos del día", camara: "Buenas fotos", pantalla: "Se dobla por la mitad", valor: "Caro" },
+      "Galaxy S24 Ultra": { bateria: "Hasta 2 días", camara: "Mejor zoom", pantalla: "Inmensa", valor: "Premium (1399€)" },
+      "Galaxy S24+": { bateria: "1 día", camara: "Muy buena", pantalla: "Grande", valor: "Alto (1199€)" },
+      "Galaxy S24": { bateria: "1 día", camara: "Muy buena", pantalla: "Buena", valor: "Alto (899€)" },
+      "Galaxy S23": { bateria: "1 día", camara: "Muy buena", pantalla: "Viva", valor: "Alto (899€)" },
+      "Galaxy S22": { bateria: "Día", camara: "Buena", pantalla: "Buena", valor: "Medio (749€)" },
+      "Galaxy A55": { bateria: "1 día", camara: "Normal", pantalla: "Buena", valor: "Económico (449€)" },
+      "Galaxy A35": { bateria: "1 día", camara: "Normal", pantalla: "Buena", valor: "Económico (349€)" },
+      "Galaxy Z Fold": { bateria: "1 día", camara: "Muy buena", pantalla: "Tablet", valor: "Ultra Premium" },
+      "Galaxy Z Flip": { bateria: "Día", camara: "Buena", pantalla: "Plegable", valor: "Premium" },
 
-      // Xiaomi & Redmi & Poco
-      "Xiaomi 14": { bateria: "Dura 1 día y medio", camara: "Fotos increíbles y muy nítidas", pantalla: "Muy brillante", valor: "Caro (Gama Alta)" },
-      "Xiaomi 13": { bateria: "Dura 1 día", camara: "Fotos muy buenas", pantalla: "Colores geniales", valor: "Alto" },
-      "Xiaomi 12 Pro": { bateria: "Dura poco, pero carga rapidísimo", camara: "Excelentes fotos", pantalla: "Brillante y fina", valor: "Alto" },
-      "Xiaomi 12": { bateria: "Dura 1 día justo", camara: "Buenas fotos", pantalla: "Buena", valor: "Medio" },
-      "Redmi Note 13": { bateria: "Dura casi 2 días", camara: "Fotos normales", pantalla: "Muy buena para su precio", valor: "Muy Económico" },
-      "Redmi Note 12 Pro": { bateria: "Dura más de 1 día", camara: "Fotos buenas de día", pantalla: "Buena fluidez", valor: "Económico" },
-      "Redmi 11 Pro": { bateria: "Dura 1 día y medio", camara: "Fotos aceptables", pantalla: "Buena y grande", valor: "Económico" },
-      "Redmi 11": { bateria: "Dura mucho tiempo", camara: "Fotos muy simples", pantalla: "Sencilla", valor: "Muy barato" },
-      "Redmi 10": { bateria: "Dura mucho tiempo", camara: "Fotos muy simples", pantalla: "Sencilla", valor: "Muy barato" },
-      "Poco F5": { bateria: "Dura 1 día de sobra", camara: "Regulares", pantalla: "Súper rápida para juegos", valor: "Medio (Potente)" },
-      "Poco X6": { bateria: "Dura más de 1 día", camara: "Regulares", pantalla: "Muy buena al sol", valor: "Económico" },
-      "Poco M5": { bateria: "Dura mucho", camara: "Fotos básicas", pantalla: "Sencilla", valor: "Muy barato" },
+      "Xiaomi 14 Ultra": { bateria: "1 día y medio", camara: "Increíble", pantalla: "Brillante", valor: "Premium (1499€)" },
+      "Xiaomi 14": { bateria: "1 día", camara: "Muy buena", pantalla: "Brillante", valor: "Alto (999€)" },
+      "Xiaomi 13": { bateria: "1 día", camara: "Muy buena", pantalla: "Genial", valor: "Alto (799€)" },
+      "Redmi Note 13 Pro": { bateria: "2 días", camara: "Buena", pantalla: "Buena", valor: "Económico (399€)" },
+      "Redmi Note 13": { bateria: "2 días", camara: "Normal", pantalla: "Buena", valor: "Económico (299€)" },
+      "Poco X6 Pro": { bateria: "1 día", camara: "Regular", pantalla: "Buena", valor: "Medio (399€)" },
+      "Poco F5": { bateria: "Día", camara: "Regular", pantalla: "Rápida", valor: "Medio (349€)" },
 
-      // Default
-      "Genérico": { bateria: "Dura alrededor de 1 día", camara: "Calidad estándar", pantalla: "Normal", valor: "Depende del modelo" }
+      "Pura 70": { bateria: "1 día", camara: "Buena", pantalla: "Buena", valor: "Alto" },
+      "Mate 60 Pro": { bateria: "1 día", camara: "Muy buena", pantalla: "Grande", valor: "Premium" },
+      "P50": { bateria: "1 día", camara: "Buena", pantalla: "Buena", valor: "Medio" },
+
+      "Pixel 9 Pro": { bateria: "1 día", camara: "Excelente IA", pantalla: "Excelente", valor: "Premium (999€)" },
+      "Pixel 8": { bateria: "1 día", camara: "Buena IA", pantalla: "Buena", valor: "Medio (699€)" },
+      "Pixel 7a": { bateria: "1 día", camara: "Buena", pantalla: "Buena", valor: "Económico (499€)" },
+
+      "Edge 50 Ultra": { bateria: "1 día", camara: "Muy buena", pantalla: "Curva", valor: "Premium (1199€)" },
+      "Edge 50 Pro": { bateria: "1 día", camara: "Buena", pantalla: "Buena", valor: "Alto (899€)" },
+      "G84": { bateria: "2 días", camara: "Normal", pantalla: "Buena", valor: "Económico (299€)" },
+      "Razr 40": { bateria: "1 día", camara: "Buena", pantalla: "Plegable", valor: "Premium" },
+
+      "Find X8 Pro": { bateria: "1 día", camara: "Excelente", pantalla: "Brillante", valor: "Premium (1199€)" },
+      "Find X7": { bateria: "1 día", camara: "Muy buena", pantalla: "Buena", valor: "Alto" },
+      "Reno12": { bateria: "1 día", camara: "Buena", pantalla: "Buena", valor: "Medio" },
+
+      "Genérico": { bateria: "1 día", camara: "Estándar", pantalla: "Normal", valor: "Variable" }
     };
 
     function getStats(name) {
       if (bbddStats[name]) return bbddStats[name];
-
-      // Fuzzy search (si el nombre contiene la palabra clave)
       for (let key in bbddStats) {
         if (name.toLowerCase().includes(key.toLowerCase())) {
           return bbddStats[key];
@@ -198,68 +148,42 @@
     }
 
     function renderComparison() {
-      let comp = JSON.parse(localStorage.getItem("comparar")) || [];
-      let container = document.getElementById("comparison-container");
+      const comp = JSON.parse(localStorage.getItem("comparar")) || [];
+      const container = document.getElementById("comparison-container");
       container.innerHTML = "";
 
       if (comp.length === 0) {
-        container.innerHTML = "<div class='empty-state'>No has seleccionado ningún móvil para comparar. Vuelve a las marcas y elige hasta 3 móviles.</div>";
+        container.innerHTML = "<div class='empty-state'>No has seleccionado móviles para comparar.<br>Ve a las marcas y elige hasta 3.</div>";
         return;
       }
 
       comp.forEach((item, index) => {
-        let stats = getStats(item.nombre);
-
-        let card = document.createElement("div");
+        const stats = getStats(item.nombre);
+        const card = document.createElement("div");
         card.className = "compare-card";
-
-        // La imagen original podría ser un src relativo. Lo mantenemos
-        let imgSrc = item.img || "descarga.png";
-
         card.innerHTML = `
-        <img src="${imgSrc}" alt="${item.nombre}">
-        <h3 style="color:#007BFF; margin-bottom: 15px; min-height: 44px;">${item.nombre}</h3>
-        
-        <div class="stat-group">
-          <strong>🔋 Batería</strong>
-          <span>${stats.bateria}</span>
-        </div>
-        
-        <div class="stat-group">
-          <strong>📸 Cámara</strong>
-          <span>${stats.camara}</span>
-        </div>
-
-        <div class="stat-group">
-          <strong>📱 Pantalla</strong>
-          <span>${stats.pantalla}</span>
-        </div>
-
-        <div class="stat-group">
-          <strong>💰 Tipo de bolsillo</strong>
-          <span>${stats.valor}</span>
-        </div>
-        
-        <button class="btn-remove" onclick="removeCompare(${index})">Quitar de la lista</button>
-      `;
+          <img src="${item.img || 'descarga.png'}" alt="${item.nombre}">
+          <h3 style="color:var(--primary);margin-bottom:15px;">${item.nombre}</h3>
+          <div class="stat-group"><strong>Batería</strong><span>${stats.bateria}</span></div>
+          <div class="stat-group"><strong>Cámara</strong><span>${stats.camara}</span></div>
+          <div class="stat-group"><strong>Pantalla</strong><span>${stats.pantalla}</span></div>
+          <div class="stat-group"><strong>Precio</strong><span>${stats.valor}</span></div>
+          <button class="btn btn-danger" onclick="removeCompare(${index})" style="margin-top:15px">Quitar</button>
+        `;
         container.appendChild(card);
       });
     }
 
     function removeCompare(index) {
-      let comp = JSON.parse(localStorage.getItem("comparar")) || [];
+      const comp = JSON.parse(localStorage.getItem("comparar")) || [];
       comp.splice(index, 1);
       localStorage.setItem("comparar", JSON.stringify(comp));
       renderComparison();
     }
 
-    // Update cart count
     document.getElementById("contador").textContent = (JSON.parse(localStorage.getItem("carrito")) || []).length;
-
-    // Render on load
     renderComparison();
   </script>
-
 </body>
 
 </html>

@@ -2,257 +2,128 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iPhone - Tech Wise</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-    }
-
-    .top-bar {
-      background: #007BFF;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .top-bar a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      margin-left: 15px;
-    }
-
-    .cart-count {
-      background: red;
-      border-radius: 50%;
-      padding: 3px 8px;
-      font-size: 12px;
-      margin-left: 5px;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 30px 0;
-      color: #007BFF;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 0 30px 40px;
-    }
-
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    button {
-      background: #007BFF;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
   <div class="top-bar">
-    <div>📱 iPhone</div>
-    <div>
+    <div class="logo">
+      <img src="logo-techwise.png" alt="Logo Tech Wise">
+      <span>iPhone</span>
+    </div>
+    <nav class="nav">
       <a href="index.html">Inicio</a>
       <a href="carro.html">Carro <span id="contador" class="cart-count">0</span></a>
-      <a href="Comparacióndemóviles.html">Comparar <span id="contador-comp" class="cart-count">0</span></a>
-    </div>
+      <a href="Comparacióndemóviles.html">Comparar</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" id="loginLink">Login</a>
+      <a href="#" id="cerrarSesion" onclick="cerrarSesion(event)" style="display:none;color:#ffeb3b;">Cerrar sesión</a>
+    </nav>
   </div>
 
-  <h1>iPhone disponibles</h1>
-
-  <div class="grid">
-
-    <!-- iPhone 15 -->
-    <div class="card">
-      <img src="descarga.png">
-      <h3>iPhone 15 Pro Max</h3>
-      <div class="price">1499 €</div>
-      <button onclick="add('iPhone 15 Pro Max',1499)">Añadir</button>
+  <div class="content">
+    <h1 class="page-title">iPhone</h1>
+    
+    <div class="featured" style="text-align:center;margin-bottom:30px;padding:20px;background:white;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+      <h2 style="color:var(--primary);margin-bottom:15px;">Último Lanzamiento</h2>
+      <img src="samsugultra24.png" alt="Galaxy S24 Ultra" style="width:200px;">
+      <h3 style="color:var(--primary);margin:15px 0;">Galaxy S24 Ultra</h3>
+      <div class="price" style="font-weight:bold;font-size:24px;margin-bottom:15px;">1399 €</div>
+      <button class="btn btn-primary" onclick="add('Samsung Galaxy S24 Ultra', 1399)">Añadir</button>
     </div>
+    
+    <div class="grid" id="iphoneGrid"></div>
+  </div>
 
-    <div class="card">
-      <img src="descarga1.png">
-      <h3>iPhone 15 Pro</h3>
-      <div class="price">1299 €</div>
-      <button onclick="add('iPhone 15 Pro',1299)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="descarga2.png">
-      <h3>iPhone 15</h3>
-      <div class="price">999 €</div>
-      <button onclick="add('iPhone 15',999)">Añadir</button>
-    </div>
-
-    <!-- iPhone 14 -->
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_14/iphone_14_PNG6.png">
-      <h3>iPhone 14 Pro Max</h3>
-      <div class="price">1299 €</div>
-      <button onclick="add('iPhone 14 Pro Max',1299)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_14/iphone_14_PNG8.png">
-      <h3>iPhone 14 Pro</h3>
-      <div class="price">1099 €</div>
-      <button onclick="add('iPhone 14 Pro',1099)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_14/iphone_14_PNG10.png">
-      <h3>iPhone 14</h3>
-      <div class="price">899 €</div>
-      <button onclick="add('iPhone 14',899)">Añadir</button>
-    </div>
-
-    <!-- iPhone 13 -->
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_13/iphone_13_PNG10.png">
-      <h3>iPhone 13 Pro Max</h3>
-      <div class="price">1099 €</div>
-      <button onclick="add('iPhone 13 Pro Max',1099)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_13/iphone_13_PNG12.png">
-      <h3>iPhone 13 Pro</h3>
-      <div class="price">999 €</div>
-      <button onclick="add('iPhone 13 Pro',999)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_13/iphone_13_PNG15.png">
-      <h3>iPhone 13</h3>
-      <div class="price">799 €</div>
-      <button onclick="add('iPhone 13',799)">Añadir</button>
-    </div>
-
-    <!-- iPhone 12 -->
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_12/iphone_12_PNG28.png">
-      <h3>iPhone 12 Pro Max</h3>
-      <div class="price">899 €</div>
-      <button onclick="add('iPhone 12 Pro Max',899)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_12/iphone_12_PNG25.png">
-      <h3>iPhone 12</h3>
-      <div class="price">699 €</div>
-      <button onclick="add('iPhone 12',699)">Añadir</button>
-    </div>
-
-    <!-- iPhone 11 -->
-    <div class="card">
-      <img src="https://pngimg.com/uploads/iphone_11/iphone_11_PNG44.png">
-      <h3>iPhone 11 Pro</h3>
-      <div class="price">599 €</div>
-      <button onclick="add('iPhone 11 Pro',599)">Añadir</button>
-    </div>
-
-    <div class="card">
-      <img src="descarga4.png">
-      <h3>iPhone 11</h3>
-      <div class="price">499 €</div>
-      <button onclick="add('iPhone 11',499)">Añadir</button>
-    </div>
-
-    <!-- iPhone SE -->
-    <div class="card">
-      <img src="descargaes.png">
-      <h3>iPhone SE (2022)</h3>
-      <div class="price">429 €</div>
-      <button onclick="add('iPhone SE 2022',429)">Añadir</button>
-    </div>
-
+  <div class="bottom-bar">
+    <div>Tech Wise</div>
+    <div class="center-address">Calle Corcega 31</div>
+    <div>Tel: 634 578 952</div>
   </div>
 
   <script>
+    const moviles = JSON.parse(localStorage.getItem("moviles")) || [];
+    
+    const iphoneDefault = [
+      { modelo: "iPhone 16 Pro Max", precio: 1319, imagen: "descarga.png", fecha: "2024-09-20" },
+      { modelo: "iPhone 16 Pro", precio: 1119, imagen: "descarga1.png", fecha: "2024-09-20" },
+      { modelo: "iPhone 16", precio: 899, imagen: "descarga2.png", fecha: "2024-09-20" },
+      { modelo: "iPhone 16e", precio: 699, imagen: "descarga1.png", fecha: "2025-02-20" },
+      { modelo: "iPhone 15 Pro Max", precio: 1119, imagen: "descarga.png", fecha: "2023-09-12" },
+      { modelo: "iPhone 15 Pro", precio: 1019, imagen: "descarga1.png", fecha: "2023-09-12" },
+      { modelo: "iPhone 15", precio: 859, imagen: "descarga2.png", fecha: "2023-09-12" },
+      { modelo: "iPhone 14 Pro Max", precio: 999, imagen: "samsugultra24.png", fecha: "2022-09-07" },
+      { modelo: "iPhone 14", precio: 699, imagen: "samsug23.png", fecha: "2022-09-07" },
+      { modelo: "iPhone SE (2022)", precio: 429, imagen: "descargaes.png", fecha: "2022-03-08" }
+    ];
+
+    const iphoneGuardados = moviles.filter(m => m.marca === "iphone");
+    const iphoneTodos = [...iphoneGuardados, ...iphoneDefault];
+
+    function getDescuento(fechaStr) {
+      const fecha = new Date(fechaStr);
+      const ahora = new Date();
+      const diffMeses = (ahora - fecha) / (1000 * 60 * 60 * 24 * 30);
+      return Math.min(Math.floor(diffMeses / 4) * 10, 10);
+    }
+
+    function mostrarIPhones() {
+      const container = document.getElementById("iphoneGrid");
+      container.innerHTML = iphoneTodos.map((m, i) => {
+        const descuento = m.fecha ? getDescuento(m.fecha) : 0;
+        const precioFinal = descuento > 0 ? Math.round(m.precio * (1 - descuento / 100)) : m.precio;
+        return `
+        <div class="card">
+          <img src="${m.imagen}" alt="${m.modelo}">
+          <h3>${m.modelo}</h3>
+          ${descuento > 0 ? `<div class="price" style="text-decoration:line-through;color:#999;">${m.precio} €</div>` : ''}
+          <div class="price" style="${descuento > 0 ? 'color:var(--danger);' : ''}">${precioFinal} €${descuento > 0 ? ` <span style="color:var(--danger);font-size:14px;">(-${descuento}%)</span>` : ''}</div>
+          <div class="buttons">
+            <button class="btn btn-primary" onclick="add('${m.modelo}', ${precioFinal})">Añadir</button>
+            <button class="btn btn-secondary" onclick="comparar('${m.modelo}', '${m.imagen}')">Comparar</button>
+          </div>
+        </div>
+      `}).join("");
+      
+      document.getElementById("contador").textContent = (JSON.parse(localStorage.getItem("carrito")) || []).length;
+    }
+
     function add(nombre, precio) {
-      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       carrito.push({ nombre, precio });
       localStorage.setItem("carrito", JSON.stringify(carrito));
-      actualizarContador();
-    }
-
-    function actualizarContador() {
-      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       document.getElementById("contador").textContent = carrito.length;
+      alert("Añadido: " + nombre);
     }
 
-    actualizarContador();
-  </script>
-
-  <script>
-    function comparar(n, img) {
-      let comp = JSON.parse(localStorage.getItem("comparar")) || [];
-      if (comp.length >= 3) { alert("Solo puedes comparar hasta 3 móviles."); return; }
-      if (!comp.find(x => x.nombre === n)) {
-        comp.push({ nombre: n, img: img });
+    function comparar(nombre, imagen) {
+      const comp = JSON.parse(localStorage.getItem("comparar")) || [];
+      if (comp.length >= 3) { alert("Máximo 3 móviles para comparar"); return; }
+      if (!comp.find(x => x.nombre === nombre)) {
+        comp.push({ nombre, imagen });
         localStorage.setItem("comparar", JSON.stringify(comp));
+        alert("Añadido a сравнение: " + nombre);
       } else {
-        alert("Este móvil ya está en la comparación.");
+        alert("Ya está en la comparación");
       }
-      let span = document.getElementById("contador-comp");
-      if (span) span.textContent = JSON.parse(localStorage.getItem("comparar")).length;
     }
-    window.addEventListener('DOMContentLoaded', () => {
-      let span = document.getElementById("contador-comp");
-      if (span) span.textContent = (JSON.parse(localStorage.getItem("comparar")) || []).length;
 
-      document.querySelectorAll('.card').forEach(card => {
-        let imgEl = card.querySelector('img');
-        let addBtn = card.querySelector('button');
-        if (imgEl && addBtn && addBtn.getAttribute('onclick')) {
-          let img = imgEl.getAttribute('src');
-          let match = addBtn.getAttribute('onclick').match(/add\('([^']+)'/);
-          if (match) {
-            let nombre = match[1];
-            let compBtn = document.createElement('button');
-            compBtn.textContent = 'Comparar';
-            compBtn.style.background = '#6c757d';
-            compBtn.style.marginLeft = '5px';
-            compBtn.onclick = function () { comparar(nombre, img); };
-            addBtn.parentNode.insertBefore(compBtn, addBtn.nextSibling);
-          }
-        }
-      });
-    });
+    mostrarIPhones();
+
+    if (localStorage.getItem("logueado") === "true") {
+      document.getElementById("cerrarSesion").style.display = "inline";
+      document.getElementById("loginLink").style.display = "none";
+    }
+
+    function cerrarSesion(e) {
+      e.preventDefault();
+      localStorage.removeItem("logueado");
+      window.location.href = "login.html";
+    }
   </script>
 </body>
 
